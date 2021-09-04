@@ -1,0 +1,42 @@
+name: Performance
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'gradle profiler task name'
+        required: true
+        default: 'assemble'
+
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: ./.github/actions/setup-java
+      id: java
+
+    - name: install sdkman
+      run: |
+        curl -s https://get.sdkman.io | bash
+
+    - name: install gradle profiler
+      run: |
+        source ~/.sdkman/bin/sdkman-init.sh
+        sdk install gradleprofiler
+
+    - name: run gradle-profiler for "${{ github.event.inputs.name }}"
+      run: |
+        source ~/.sdkman/bin/sdkman-init.sh
+        gradle-profiler --benchmark --scenario-file performance.scenarios ${{ github.event.inputs.name }}
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: performance file
+        path: |
+          ./profile-out/benchmark.html
+          ./profile-out/benchmark.csv

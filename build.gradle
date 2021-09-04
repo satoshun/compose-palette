@@ -1,0 +1,28 @@
+buildscript {
+  repositories {
+    google()
+    mavenCentral()
+  }
+  dependencies {
+    classpath libs.android.gradle
+    classpath libs.kotlin.gradle
+    classpath libs.android.dagger.hilt.gradle
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    mavenCentral()
+  }
+
+  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+      jvmTarget = JavaVersion.VERSION_1_8
+    }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}

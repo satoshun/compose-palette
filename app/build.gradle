@@ -1,0 +1,66 @@
+plugins {
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'kotlin-kapt'
+  id 'dagger.hilt.android.plugin'
+}
+
+android {
+  compileSdkVersion 30
+
+  defaultConfig {
+    applicationId "io.github.satoshun.example"
+    minSdkVersion 21
+    targetSdkVersion 30
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/AL2.0'
+    exclude 'META-INF/LGPL2.1'
+  }
+
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+
+  buildFeatures {
+    compose true
+  }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion libs.versions.compose.get()
+  }
+
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+  }
+}
+
+dependencies {
+  implementation libs.bundles.kotlin.android
+  implementation libs.bundles.android.ui
+
+  implementation libs.android.dagger.hilt.android
+  kapt libs.android.dagger.hilt.compiler
+
+  testImplementation libs.bundles.test
+
+  androidTestImplementation libs.bundles.android.test
+  debugImplementation libs.bundles.android.debug.test
+}
+
+kapt {
+  correctErrorTypes true
+}
