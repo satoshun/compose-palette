@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
+import androidx.palette.graphics.Palette
 import coil.compose.rememberImagePainter
 import io.github.satoshun.palette.palette
 
@@ -47,24 +48,35 @@ fun AppContent() {
       )
 
       val palette by palette(imageBitmap = bitmap)
-      val dominant = palette?.dominantSwatch?.rgb
-      if (dominant != null) {
-        Box(
-          modifier = Modifier
-            .size(120.dp)
-            .background(Color(dominant))
-        )
-      }
+      MyBox(palette = palette)
     }
 
     Spacer(modifier = Modifier.height(16.dp))
 
     Text(text = "Coil")
-    Image(
-      painter = rememberImagePainter(
-        data = "https://pbs.twimg.com/profile_images/1376441709135941633/B3YYh5io_400x400.jpg"
-      ),
-      contentDescription = "Image"
+    Row {
+      val url = "https://pbs.twimg.com/profile_images/1376441709135941633/B3YYh5io_400x400.jpg"
+      Image(
+        modifier = Modifier.size(120.dp),
+        painter = rememberImagePainter(data = url),
+        contentDescription = "Image"
+      )
+
+      val palette by io.github.satoshun.palette.coil.palette(data = url)
+      println("palette $palette")
+      MyBox(palette = palette)
+    }
+  }
+}
+
+@Composable
+fun MyBox(palette: Palette?) {
+  val dominant = palette?.dominantSwatch?.rgb
+  if (dominant != null) {
+    Box(
+      modifier = Modifier
+        .size(120.dp)
+        .background(Color(dominant))
     )
   }
 }

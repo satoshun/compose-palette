@@ -50,6 +50,7 @@ android {
 
 dependencies {
   implementation project(":palette")
+  implementation project(":coil-palette")
 
   implementation libs.bundles.kotlin.android
   implementation libs.bundles.android.ui
