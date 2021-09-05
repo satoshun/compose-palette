@@ -49,6 +49,8 @@ android {
 }
 
 dependencies {
+  implementation project(":palette")
+
   implementation libs.bundles.kotlin.android
   implementation libs.bundles.android.ui
 

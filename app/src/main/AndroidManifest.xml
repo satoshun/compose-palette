@@ -3,9 +3,9 @@
   xmlns:tools="http://schemas.android.com/tools"
   package="io.github.satoshun.example">
 
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
   <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
   <application
     android:allowBackup="true"
@@ -16,12 +16,17 @@
     android:theme="@style/AppTheme"
     tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-    <activity android:name=".AppActivity">
+    <activity
+      android:name=".AppActivity"
+      android:exported="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name=".TestActivity" />
+
+    <activity
+      android:name=".TestActivity"
+      android:exported="true" />
   </application>
 </manifest>
