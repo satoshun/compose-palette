@@ -15,17 +15,12 @@ import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 
 @Composable
-fun palette(data: String): State<Palette?> {
-  val context = LocalContext.current
-  val palette = remember(data) {
+fun palette(request: ImageRequest): State<Palette?> {
+  val palette = remember(request) {
     mutableStateOf<Palette?>(null)
   }
 
-  LaunchedEffect(data) {
-    val request = ImageRequest.Builder(context)
-      .bitmapConfig(config = Bitmap.Config.RGB_565)
-      .data(data)
-      .build()
+  LaunchedEffect(request) {
     val result = Coil.execute(request)
     val bitmap = result.drawable?.toBitmap()
     if (bitmap != null) {
@@ -36,13 +31,23 @@ fun palette(data: String): State<Palette?> {
   return palette
 }
 
-private suspend fun getPalette(bitmap: Bitmap): Palette = suspendCancellableCoroutine { cont ->
+@Composable
+fun palette(
+  data: Any?,
+  config: Bitmap.Config = Bitmap.Config.RGB_565,
+  builder: ImageRequest.Builder.() -> Unit = {}
+): State<Palette?> {
+  val context = LocalContext.current
+  val requestBuilder = ImageRequest.Builder(context)
+    .bitmapConfig(config = config)
+    .data(data)
+  requestBuilder.builder()
+  return palette(request = requestBuilder.build())
+}
+
+private suspend fun getPalette(bitmap: Bitmap): Palette? = suspendCancellableCoroutine { cont ->
   val task = Palette.from(bitmap).generate {
-    if (it == null) {
-      // TODO null?
-    } else {
-      cont.resume(it)
-    }
+    cont.resume(it)
   }
 
   cont.invokeOnCancellation {

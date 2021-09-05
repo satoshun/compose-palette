@@ -63,7 +63,6 @@ fun AppContent() {
       )
 
       val palette by io.github.satoshun.palette.coil.palette(data = url)
-      println("palette $palette")
       MyBox(palette = palette)
     }
   }
