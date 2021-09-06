@@ -15,7 +15,7 @@ import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 
 @Composable
-fun palette(request: ImageRequest): State<Palette?> {
+fun coilPalette(request: ImageRequest): State<Palette?> {
   val palette = remember(request) {
     mutableStateOf<Palette?>(null)
   }
@@ -32,7 +32,7 @@ fun palette(request: ImageRequest): State<Palette?> {
 }
 
 @Composable
-fun palette(
+fun coilPalette(
   data: Any?,
   config: Bitmap.Config = Bitmap.Config.RGB_565,
   builder: ImageRequest.Builder.() -> Unit = {}
@@ -42,7 +42,7 @@ fun palette(
     .data(data)
     .bitmapConfig(config = config)
   requestBuilder.builder()
-  return palette(request = requestBuilder.build())
+  return coilPalette(request = requestBuilder.build())
 }
 
 private suspend fun getPalette(bitmap: Bitmap): Palette? = suspendCancellableCoroutine { cont ->

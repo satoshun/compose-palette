@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import io.github.satoshun.palette.coil.palette
+import io.github.satoshun.palette.coil.coilPalette
 
 @ExperimentalCoilApi
 @Composable
@@ -23,6 +23,6 @@ fun CoilContent() {
     contentDescription = "Image"
   )
 
-  val palette by palette(data = url)
+  val palette by coilPalette(data = url)
   PaletteBox(palette = palette)
 }
