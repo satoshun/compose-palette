@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import io.github.satoshun.palette.palette
@@ -17,8 +18,9 @@ fun BitmapContent() {
   val bitmap = ImageBitmap.imageResource(id = R.drawable.image1)
 
   Image(
-    modifier = Modifier.size(120.dp),
+    modifier = Modifier.size(180.dp),
     bitmap = bitmap,
+    contentScale = ContentScale.Crop,
     contentDescription = "Bitmap Image"
   )
 
