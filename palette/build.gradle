@@ -36,8 +36,9 @@ android {
 }
 
 dependencies {
-  implementation libs.bundles.kotlin.android
-  implementation libs.bundles.android.ui
+  implementation libs.kotlin.stdlib
+  api libs.android.palette
+  implementation libs.android.compose.ui
 
   testImplementation libs.bundles.test
 }

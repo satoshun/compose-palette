@@ -1,1 +1,1 @@
-# Android project template
+# Palette for Jetpack Compose
