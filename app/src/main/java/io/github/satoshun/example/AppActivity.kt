@@ -16,12 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 import coil.compose.rememberImagePainter
-import io.github.satoshun.palette.palette
 
 class AppActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,35 +33,9 @@ class AppActivity : AppCompatActivity() {
 @Composable
 fun AppContent() {
   Column {
-    Text(text = "bitmap")
-    Row {
-      val bitmap = ImageBitmap.imageResource(
-        id = R.drawable.image1
-      )
-      Image(
-        modifier = Modifier.size(120.dp),
-        bitmap = bitmap,
-        contentDescription = "Bitmap Image"
-      )
-
-      val palette by palette(imageBitmap = bitmap)
-      MyBox(palette = palette)
-    }
-
+    BitmapContent()
     Spacer(modifier = Modifier.height(16.dp))
-
-    Text(text = "Coil")
-    Row {
-      val url = "https://pbs.twimg.com/profile_images/1376441709135941633/B3YYh5io_400x400.jpg"
-      Image(
-        modifier = Modifier.size(120.dp),
-        painter = rememberImagePainter(data = url),
-        contentDescription = "Image"
-      )
-
-      val palette by io.github.satoshun.palette.coil.palette(data = url)
-      MyBox(palette = palette)
-    }
+    CoilContent()
   }
 }
 

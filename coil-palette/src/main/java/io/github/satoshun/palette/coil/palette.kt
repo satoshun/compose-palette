@@ -39,8 +39,8 @@ fun palette(
 ): State<Palette?> {
   val context = LocalContext.current
   val requestBuilder = ImageRequest.Builder(context)
-    .bitmapConfig(config = config)
     .data(data)
+    .bitmapConfig(config = config)
   requestBuilder.builder()
   return palette(request = requestBuilder.build())
 }
