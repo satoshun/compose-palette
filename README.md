@@ -5,3 +5,5 @@ make the [Palette](https://developer.android.com/training/material/palette-color
 ## Usage
 
 TODO
+
+<img src="./screenshot/sample.jpeg" width=200 />
