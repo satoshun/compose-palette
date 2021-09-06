@@ -67,3 +67,11 @@ dependencies {
 kapt {
   correctErrorTypes true
 }
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+  kotlinOptions {
+    freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+    freeCompilerArgs += '-Xopt-in=androidx.compose.foundation.ExperimentalFoundationApi'
+    freeCompilerArgs += '-Xopt-in=coil.annotation.ExperimentalCoilApi'
+  }
+}
