@@ -4,13 +4,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import io.github.satoshun.palette.coil.coilPalette
+import io.github.satoshun.palette.coil.rememberCoilPaletteState
 
 @ExperimentalCoilApi
 @Composable
@@ -26,6 +25,6 @@ fun CoilContent() {
     contentDescription = "Image"
   )
 
-  val palette by coilPalette(data = url)
-  PaletteBox(palette = palette)
+  val paletteState = rememberCoilPaletteState(data = url)
+  PaletteBox(paletteState = paletteState)
 }

@@ -3,25 +3,23 @@ package io.github.satoshun.palette
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.palette.graphics.Palette
 
 @Composable
-fun palette(
+fun rememberPaletteState(
   bitmap: Bitmap,
   mayInterruptIfRunning: Boolean = false
-): State<Palette?> {
+): PaletteState {
   val palette = remember(bitmap) {
-    mutableStateOf<Palette?>(null)
+    MutablePaletteState()
   }
 
   DisposableEffect(bitmap) {
     val task = Palette.from(bitmap).generate {
-      palette.value = it
+      palette.updatePalette(it)
     }
     onDispose { task.cancel(mayInterruptIfRunning) }
   }
@@ -30,11 +28,11 @@ fun palette(
 }
 
 @Composable
-fun palette(
+fun rememberPaletteState(
   imageBitmap: ImageBitmap,
   mayInterruptIfRunning: Boolean = false
-): State<Palette?> =
-  palette(
+): PaletteState =
+  rememberPaletteState(
     bitmap = imageBitmap.asAndroidBitmap(),
     mayInterruptIfRunning = mayInterruptIfRunning
   )

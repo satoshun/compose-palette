@@ -21,14 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.palette.graphics.Palette
-import io.github.satoshun.palette.darkMutedColorOrNull
-import io.github.satoshun.palette.darkVibrantColorOrNull
-import io.github.satoshun.palette.dominantColorOrNull
-import io.github.satoshun.palette.lightMutedColorOrNull
-import io.github.satoshun.palette.lightVibrantColorOrNull
-import io.github.satoshun.palette.mutedColorOrNull
-import io.github.satoshun.palette.vibrantColorOrNull
+import io.github.satoshun.palette.PaletteState
 
 class AppActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,19 +44,19 @@ fun AppContent() {
 
 @ExperimentalFoundationApi
 @Composable
-fun PaletteBox(palette: Palette?) {
+fun PaletteBox(paletteState: PaletteState) {
   LazyVerticalGrid(
     modifier = Modifier.fillMaxWidth(),
     cells = GridCells.Fixed(2)
   ) {
     val colors = listOf(
-      "vibrant" to palette?.vibrantColorOrNull,
-      "darkVibrant" to palette?.darkVibrantColorOrNull,
-      "lightVibrant" to palette?.lightVibrantColorOrNull,
-      "mutedColor" to palette?.mutedColorOrNull,
-      "darkMutedColor" to palette?.darkMutedColorOrNull,
-      "lightMutedColor" to palette?.lightMutedColorOrNull,
-      "dominantColor" to palette?.dominantColorOrNull
+      "vibrant" to paletteState.vibrant,
+      "darkVibrant" to paletteState.darkVibrant,
+      "lightVibrant" to paletteState.lightVibrant,
+      "mutedColor" to paletteState.muted,
+      "darkMutedColor" to paletteState.darkMuted,
+      "lightMutedColor" to paletteState.lightMuted,
+      "dominantColor" to paletteState.dominant
     ).filter { it.second != null }
 
     items(colors) {
