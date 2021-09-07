@@ -1,4 +1,4 @@
-package io.github.satoshun.example
+package io.github.satoshun.compose.palette.example
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size

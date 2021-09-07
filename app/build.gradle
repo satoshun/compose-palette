@@ -9,7 +9,7 @@ android {
   compileSdkVersion buildConfig.compileSdk
 
   defaultConfig {
-    applicationId "io.github.satoshun.example"
+    applicationId "io.github.satoshun.compose.palette.example"
     minSdkVersion buildConfig.minSdk
     targetSdkVersion buildConfig.targetSdks
     versionCode 1
