@@ -21,7 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import io.github.satoshun.palette.PaletteState
+import io.github.satoshun.compose.palette.PaletteState
 
 class AppActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

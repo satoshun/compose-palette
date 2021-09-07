@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import io.github.satoshun.palette.rememberPaletteState
+import io.github.satoshun.compose.palette.rememberPaletteState
 
 @Composable
 fun BitmapContent() {

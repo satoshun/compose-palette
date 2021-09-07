@@ -1,4 +1,4 @@
-package io.github.satoshun.palette
+package io.github.satoshun.compose.palette
 
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.derivedStateOf

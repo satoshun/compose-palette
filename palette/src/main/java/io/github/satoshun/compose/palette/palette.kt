@@ -1,4 +1,4 @@
-package io.github.satoshun.palette
+package io.github.satoshun.compose.palette
 
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable

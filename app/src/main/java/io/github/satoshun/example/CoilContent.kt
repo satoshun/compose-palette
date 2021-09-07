@@ -9,7 +9,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import io.github.satoshun.palette.coil.rememberCoilPaletteState
+import io.github.satoshun.compose.palette.coil.rememberCoilPaletteState
 
 @ExperimentalCoilApi
 @Composable

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-  compileSdkVersion 30
+  compileSdkVersion buildConfig.compileSdk
 
   defaultConfig {
-    minSdkVersion 21
-    targetSdkVersion 30
+    minSdkVersion buildConfig.minSdk
+    targetSdkVersion buildConfig.targetSdks
   }
 
   packagingOptions {

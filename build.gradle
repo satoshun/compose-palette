@@ -8,6 +8,12 @@ buildscript {
     classpath libs.kotlin.gradle
     classpath libs.android.dagger.hilt.gradle
   }
+
+  ext.buildConfig = [
+      'compileSdk': 30,
+      'minSdk'    : 21,
+      'targetSdk' : 30,
+  ]
 }
 
 allprojects {
