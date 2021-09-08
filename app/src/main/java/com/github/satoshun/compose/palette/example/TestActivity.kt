@@ -1,4 +1,4 @@
-package io.github.satoshun.compose.palette.example
+package com.github.satoshun.compose.palette.example
 
 import androidx.activity.ComponentActivity
 

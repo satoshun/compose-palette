@@ -2,8 +2,8 @@ package io.github.satoshun.example
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import io.github.satoshun.compose.palette.example.AppContent
-import io.github.satoshun.compose.palette.example.TestActivity
+import com.github.satoshun.compose.palette.example.AppContent
+import com.github.satoshun.compose.palette.example.TestActivity
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

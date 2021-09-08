@@ -1,4 +1,4 @@
-package io.github.satoshun.compose.palette.coil
+package com.github.satoshun.compose.palette.coil
 
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
@@ -9,8 +9,8 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
 import coil.Coil
 import coil.request.ImageRequest
-import io.github.satoshun.compose.palette.MutablePaletteState
-import io.github.satoshun.compose.palette.PaletteState
+import com.github.satoshun.compose.palette.MutablePaletteState
+import com.github.satoshun.compose.palette.PaletteState
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 

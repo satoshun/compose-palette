@@ -1,4 +1,4 @@
-package io.github.satoshun.compose.palette.example
+package com.github.satoshun.compose.palette.example
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
@@ -9,7 +9,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
-import io.github.satoshun.compose.palette.coil.rememberCoilPaletteState
+import com.github.satoshun.compose.palette.coil.rememberCoilPaletteState
 
 @ExperimentalCoilApi
 @Composable

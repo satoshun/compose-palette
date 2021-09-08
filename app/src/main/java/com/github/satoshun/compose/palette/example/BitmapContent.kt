@@ -1,4 +1,4 @@
-package io.github.satoshun.compose.palette.example
+package com.github.satoshun.compose.palette.example
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import io.github.satoshun.compose.palette.rememberPaletteState
+import com.github.satoshun.compose.palette.rememberPaletteState
 
 @Composable
 fun BitmapContent() {
