@@ -54,6 +54,8 @@ kotlin-coroutine-ui = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-andro
 junit = "junit:junit:4.13"
 robolectric = "org.robolectric:robolectric:4.6.1"
 
+maven-publish-gradle = "com.vanniktech:gradle-maven-publish-plugin:0.17.0"
+
 [bundles]
 kotlin-android = ["kotlin-stdlib"]
 android-ui = [
