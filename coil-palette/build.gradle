@@ -37,7 +37,7 @@ android {
 }
 
 dependencies {
-  implementation project(":palette")
+  api project(":palette")
 
   implementation libs.kotlin.stdlib
   implementation libs.android.compose.ui
