@@ -15,3 +15,23 @@ implementation "com.github.satoshun.compose.palette:coil:0.0.2"
 ```
 
 ## Usage
+
+### generate Palette from Bitmap
+
+```kotlin
+// Get Palette
+val bitmap = ImageBitmap.imageResource(id = R.drawable.image)
+val paletteState = rememberPaletteState(imageBitmap = bitmap)
+
+// Use Palette
+paletteState.palette
+paletteState.darkVibrant
+```
+
+### generate external source by Coil
+
+```kotlin
+// Get Palette
+val url = "..."
+val paletteState = rememberCoilPaletteState(data = url)
+```
