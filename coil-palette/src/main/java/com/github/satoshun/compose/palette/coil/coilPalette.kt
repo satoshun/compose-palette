@@ -1,12 +1,14 @@
 package com.github.satoshun.compose.palette.coil
 
 import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
+import coil.compose.AsyncImagePainter
 import coil.imageLoader
 import coil.request.ImageRequest
 import com.github.satoshun.compose.palette.MutablePaletteState
@@ -26,6 +28,21 @@ fun rememberCoilPaletteState(request: ImageRequest): PaletteState {
     }
   }
 
+  return palette
+}
+
+@Composable
+fun rememberCoilPaletteState(painter: AsyncImagePainter): PaletteState {
+  val palette = remember(painter) { MutablePaletteState() }
+  val state = painter.state
+  if (state is AsyncImagePainter.State.Success) {
+    val bitmap = state.result.drawable as? BitmapDrawable
+    if (bitmap != null) {
+      LaunchedEffect(bitmap) {
+        palette.updatePalette(getPalette(bitmap.bitmap))
+      }
+    }
+  }
   return palette
 }
 

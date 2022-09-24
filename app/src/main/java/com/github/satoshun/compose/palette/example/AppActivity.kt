@@ -12,9 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,20 +33,18 @@ class AppActivity : AppCompatActivity() {
 
 @Composable
 fun AppContent() {
-  Column {
-    BitmapContent()
-    Spacer(modifier = Modifier.height(16.dp))
-    CoilContent()
+  LazyColumn {
+    item { BitmapContent() }
+    item { Spacer(modifier = Modifier.height(16.dp)) }
+    item { CoilContent() }
+    item { CoilContent2() }
   }
 }
 
 @ExperimentalFoundationApi
 @Composable
 fun PaletteBox(paletteState: PaletteState) {
-  LazyVerticalGrid(
-    modifier = Modifier.fillMaxWidth(),
-    columns = GridCells.Fixed(2)
-  ) {
+  Column {
     val colors = listOf(
       "vibrant" to paletteState.vibrant,
       "darkVibrant" to paletteState.darkVibrant,
@@ -58,8 +54,7 @@ fun PaletteBox(paletteState: PaletteState) {
       "lightMutedColor" to paletteState.lightMuted,
       "dominantColor" to paletteState.dominant
     ).filter { it.second != null }
-
-    items(colors) {
+    colors.forEach {
       MyBoxItem(text = it.first, color = it.second!!)
     }
   }
