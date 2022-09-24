@@ -7,19 +7,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.graphics.drawable.toBitmap
 import androidx.palette.graphics.Palette
-import coil.Coil
+import coil.imageLoader
 import coil.request.ImageRequest
 import com.github.satoshun.compose.palette.MutablePaletteState
 import com.github.satoshun.compose.palette.PaletteState
-import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 
 @Composable
 fun rememberCoilPaletteState(request: ImageRequest): PaletteState {
   val palette = remember(request) { MutablePaletteState() }
 
   LaunchedEffect(request) {
-    val result = Coil.execute(request)
+    val result = request.context.imageLoader.execute(request)
     val bitmap = result.drawable?.toBitmap()
     if (bitmap != null) {
       palette.updatePalette(getPalette(bitmap))

@@ -1,6 +1,7 @@
 package com.github.satoshun.compose.palette.example
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,16 +14,18 @@ import com.github.satoshun.compose.palette.rememberPaletteState
 
 @Composable
 fun BitmapContent() {
-  Text(text = "Bitmap")
-  val bitmap = ImageBitmap.imageResource(id = R.drawable.image1)
+  Column {
+    Text(text = "Bitmap")
+    val bitmap = ImageBitmap.imageResource(id = R.drawable.image1)
 
-  Image(
-    modifier = Modifier.size(180.dp),
-    bitmap = bitmap,
-    contentScale = ContentScale.Crop,
-    contentDescription = "Bitmap Image"
-  )
+    Image(
+      modifier = Modifier.size(180.dp),
+      bitmap = bitmap,
+      contentScale = ContentScale.Crop,
+      contentDescription = "Bitmap Image"
+    )
 
-  val paletteState = rememberPaletteState(imageBitmap = bitmap)
-  PaletteBox(paletteState = paletteState)
+    val paletteState = rememberPaletteState(imageBitmap = bitmap)
+    PaletteBox(paletteState = paletteState)
+  }
 }
